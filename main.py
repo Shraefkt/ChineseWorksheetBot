@@ -1,7 +1,14 @@
 import scraper
 import random
+import argparse
 
-sentences = scraper.scrape("words.txt")
+parser = argparse.ArgumentParser(description="Converts a text file of words into a worksheet")
+parser.add_argument('File',metavar='file',type=str,help="file of words to convert")
+
+args = parser.parse_args()
+filename = args.File
+
+sentences = scraper.scrape(filename)
 
 text = ""
 answers = ""
@@ -10,9 +17,10 @@ words = list(sentences.keys())
 random.shuffle(words)
 
 text += "_" * 70 + "\n"
+
 for i in range(len(words)):
     text += words[i]
-    text += "    |   "
+    text += "   |   "
     if i%5 == 4:
         text+= "\n" + "_" * 70 + "\n"
 text+="\n"

@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 from urllib import parse
+
 def scrape(filename) :
     with open(filename,"r",encoding="utf-8") as f:
         words = f.readlines()
